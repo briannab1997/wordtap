@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WordTap — a daily 5-letter word guessing game. Six tries. One word. Can you crack it?" />
+    <title>WordTap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div id="app">
+
+        <header>
+            <button class="icon-btn" id="btn-help" aria-label="How to play">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+            </button>
+
+            <div class="logo">
+                <h1>WordTap</h1>
+                <span class="day-badge" id="day-badge">#1</span>
+            </div>
+
+            <button class="icon-btn" id="btn-stats" aria-label="Statistics">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+            </button>
+        </header>
+
+        <div id="toast-container" aria-live="polite"></div>
+
+        <main>
+            <div id="board-container">
+                <div id="board" role="grid" aria-label="WordTap game board"></div>
+            </div>
+        </main>
+
+        <div id="keyboard" aria-label="On-screen keyboard"></div>
+
+    </div>
+
+    <!-- How to Play Modal -->
+    <div id="modal-help" class="modal" role="dialog" aria-modal="true" aria-labelledby="help-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="close-help" aria-label="Close">×</button>
+            <h2 id="help-title">How to Play</h2>
+            <p>Guess the <strong>WordTap</strong> in 6 tries.</p>
+            <ul>
+                <li>Each guess must be a valid 5-letter word.</li>
+                <li>Hit <strong>Enter</strong> to submit your guess.</li>
+                <li>Tile colors reveal how close you are.</li>
+            </ul>
+
+            <div class="examples">
+                <p class="examples-label">Examples</p>
+
+                <div class="example-row">
+                    <div class="example-tile correct">C</div>
+                    <div class="example-tile">R</div>
+                    <div class="example-tile">A</div>
+                    <div class="example-tile">N</div>
+                    <div class="example-tile">E</div>
+                </div>
+                <p><strong>C</strong> is in the word and in the correct spot.</p>
+
+                <div class="example-row">
+                    <div class="example-tile">P</div>
+                    <div class="example-tile present">I</div>
+                    <div class="example-tile">L</div>
+                    <div class="example-tile">O</div>
+                    <div class="example-tile">T</div>
+                </div>
+                <p><strong>I</strong> is in the word but in the wrong spot.</p>
+
+                <div class="example-row">
+                    <div class="example-tile">V</div>
+                    <div class="example-tile">A</div>
+                    <div class="example-tile">L</div>
+                    <div class="example-tile absent">U</div>
+                    <div class="example-tile">E</div>
+                </div>
+                <p><strong>U</strong> is not in the word at all.</p>
+            </div>
+
+            <p class="help-footer">A new WordTap is available every day.</p>
+        </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div id="modal-stats" class="modal" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="close-stats" aria-label="Close">×</button>
+            <h2 id="stats-title">Statistics</h2>
+
+            <div id="stats-grid">
+                <div class="stat-item"><span id="stat-played">0</span><label>Played</label></div>
+                <div class="stat-item"><span id="stat-win-pct">0</span><label>Win %</label></div>
+                <div class="stat-item"><span id="stat-streak">0</span><label>Streak</label></div>
+                <div class="stat-item"><span id="stat-max-streak">0</span><label>Best</label></div>
+            </div>
+
+            <h3>Guess Distribution</h3>
+            <div id="guess-distribution"></div>
+
+            <div id="share-section">
+                <button id="btn-share" class="share-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                    Share Result
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="js/words.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
