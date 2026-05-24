@@ -29,6 +29,8 @@ function saveStats(stats) {
 function updateStats(won, guessCount, dayNumber) {
   const stats = loadStats();
 
+  if (stats.lastPlayedDay === dayNumber) return stats;
+
   stats.played++;
 
   if (won) {

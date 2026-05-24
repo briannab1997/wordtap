@@ -119,7 +119,7 @@ function restoreKeyboard() {
 
 // ---- Input handling ----
 function handleKey(key) {
-  if (gameState.status !== "playing") return;
+  if (gameState.status !== "playing" || gameState.isRevealing) return;
 
   if (key === "Enter") {
     submitGuess();
@@ -169,10 +169,13 @@ function submitGuess() {
   }
 
   const evaluation = evaluateGuess(guess, gameState.answer);
+  gameState.isRevealing = true;
   gameState.guesses.push(guess);
   gameState.boardState.push(evaluation);
+  saveGame(gameState);
 
   revealRow(gameState.currentRow, evaluation, () => {
+    gameState.isRevealing = false;
     updateKeyboard(evaluation);
 
     const won = evaluation.every(t => t.state === "correct");

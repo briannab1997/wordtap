@@ -61,6 +61,7 @@ function createGameState() {
     currentRow: 0,
     currentInput: [],
     status: "playing", // "playing" | "won" | "lost"
+    isRevealing: false,
     boardState: []
   };
 }
@@ -72,6 +73,7 @@ function loadSavedGame() {
   try {
     const saved = JSON.parse(raw);
     if (saved.dayNumber !== getDayNumber()) return null;
+    saved.isRevealing = false;
     return saved;
   } catch {
     return null;

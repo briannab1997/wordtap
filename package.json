@@ -1,0 +1,16 @@
+{
+  "name": "wordtap",
+  "version": "1.0.0",
+  "description": "A daily 5-letter word guessing game built with vanilla JavaScript.",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node tests/game.test.js"
+  },
+  "keywords": [
+    "word-game",
+    "javascript",
+    "portfolio"
+  ],
+  "author": "Brianna Brown",
+  "license": "MIT"
+}
