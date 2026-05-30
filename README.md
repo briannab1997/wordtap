@@ -4,6 +4,10 @@ WordTap is a daily 5-letter word guessing game built with vanilla HTML, CSS, and
 
 Live demo: https://briannab1997.github.io/wordtap
 
+## Screenshot
+
+![WordTap game board](assets/wordtap.png)
+
 ## Features
 
 - Daily puzzle selection based on the current date
@@ -21,6 +25,16 @@ Live demo: https://briannab1997.github.io/wordtap
 - CSS3
 - Vanilla JavaScript
 - Browser localStorage
+
+## Skills Demonstrated
+
+- Custom game logic
+- DOM interaction
+- Keyboard and on-screen input handling
+- Repeated-letter scoring edge cases
+- Local statistics persistence
+- Responsive front-end design
+- JavaScript unit testing
 
 ## Run Locally
 
